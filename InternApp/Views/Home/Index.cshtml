@@ -1,7 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model InternApp.Models.Address
 
 <div class="container">
     <!-- Trigger the modal with a button -->
@@ -109,15 +108,21 @@
             </tr>
         </thead>
         <tbody>
-           @foreach (var users in Address){
+           @foreach (var users in Model){
             <tr>
                 <td>@users.Id</td>
                 <td>@users.Name</td>
                 <td>@users.email</td>
-                <td>@users.password</td>
+                <td>@users.Password</td>
                     <td>
-                        <button class="btn btn-warning" name="edit">Edit</button> &nbsp;&nbsp;
-                   <button class="btn btn-danger" name="edit">Delete</button>
+                        <form method="get" asp-controller="Home" asp-action="Delete">
+                           <input type="hidden" name="id" value="@users.Id">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        <form method="get" asp-controller="Home" asp-action="FormData">
+                           <input type="hidden" name="id" value="@users.Id">
+                        <button type="submit" class="btn btn-danger">Edit</button>
+                        </form>
                 </td>
                 
             </tr>

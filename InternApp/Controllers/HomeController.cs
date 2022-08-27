@@ -22,7 +22,7 @@ namespace InternApp.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.users = Context.Addresses.ToList();
+            //ViewBag.users = Context.Addresses.ToList();
             return View(Context.Addresses.ToList());
         }
         [BindProperty]
@@ -53,18 +53,44 @@ namespace InternApp.Controllers
 
             return View(address);
         }
-        //public IActionResult FormData(string name, string email, string password,string cpassword)
-        //{
-        //    // ViewBag.Name = string.Format("Name="+name+"Email="+email+"Password="password);
-        //        var viewModel = new Address()
-        //        {
-        //            Name = name,
-        //            Email = email,
-        //            Password = password,
-        //            Cpassword = cpassword,
-        //        };
-        //        return View(viewModel);
-        //}
+        [HttpGet]
+        public IActionResult FormData(int id)
+        {
+            Address a =Context.Addresses.Find(id);
+            return View(a);
+        }
+        [HttpGet]
+        public IActionResult UpdateUser(Address address)
+        {
+            var users = Context.Addresses.Find(address.Id);
+            users.Name = address.Name;
+            users.email = address.email;
+            users.Password = address.Password;
+            users.Cpassword = address.Cpassword;
+            this.Context.SaveChanges();
+            return RedirectToAction("About");
+        }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var data = Context.Addresses.Find(id);
+                Context.Addresses.Remove(data);
+                Context.SaveChanges();
+                return RedirectToAction("Index");
+
+            
+        }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var data = Context.Addresses.Find(id);
+
+            //Context.Addresses.Remove(data);
+            //Context.SaveChanges();
+            return RedirectToAction("Formdata");
+
+
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
