@@ -11,9 +11,17 @@ build_property.RootNamespace = InternApp
 build_property.ProjectDir = C:\Users\Rude\source\repos\InternApp\InternApp\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\Rude\source\repos\InternApp\InternApp
 build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Rude/source/repos/InternApp/InternApp/Views/Home/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Rude/source/repos/InternApp/InternApp/Views/Home/FormData.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGb3JtRGF0YS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Rude/source/repos/InternApp/InternApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=

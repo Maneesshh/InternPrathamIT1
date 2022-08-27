@@ -1,9 +1,18 @@
+using InternApp.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddScoped<DbContext,AppDBContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+builder.Services.AddDbContext<AppDBContext> (x =>{
+    x.UseNpgsql(builder.Configuration.GetConnectionString("MyServer"));
+});
 
 var app = builder.Build();
+app.Services.CreateScope().ServiceProvider.GetService<DbContext>()!.Database.Migrate();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
